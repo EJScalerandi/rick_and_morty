@@ -1,0 +1,89 @@
+/* Resetear los márgenes y el relleno del cuerpo (body) */
+body {
+  margin: 0;
+  padding: 0;
+  /* Establecer la imagen de fondo */
+  background-image: url('https://www.cnet.com/a/img/resize/f3b32e6ce7f12259613aec5280573b17ed1f6781/hub/2020/02/09/d6fbfcdf-1617-4d1f-89d0-a6aec8af8903/rickmorty1.jpg?auto=webp&fit=crop&height=675&width=1200');
+  /* Asegurarse de que la imagen de fondo cubra toda la pantalla */
+  background-size: cover;
+  /* Centrar la imagen de fondo horizontal y verticalmente */
+  background-position: center;
+  /* Fijar la imagen de fondo para que no se desplace con el contenido */
+  background-attachment: fixed;
+  /* Definir un color de fondo como respaldo si la imagen no se carga o no está disponible */
+  background-color: #e0e0e0; /* Puedes cambiar esto al color que desees */
+}
+
+/* Estilos para tu contenido */
+.contenedor {
+  /* Agregar márgenes o relleno si es necesario */
+  margin: 20px;
+  padding: 20px;
+  /* Agregar otros estilos según sea necesario */
+}
+
+button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+.myError{
+  color: red;
+}
+/* Estilo para el formulario */
+form {
+  max-width: 400px; /* Ancho máximo del formulario */
+  margin: 0 auto; /* Centrar el formulario horizontalmente */
+  padding: 20px; /* Agregar relleno para dar espacio alrededor del formulario */
+  background-color: rgba(255, 255, 255, 0.8); /* Fondo semi-transparente para que el texto sea legible */
+  border-radius: 5px; /* Añadir bordes redondeados al formulario */
+}
+
+/* Estilo para las etiquetas del formulario */
+label {
+  display: block; /* Mostrar las etiquetas en bloques para que cada etiqueta esté en una línea separada */
+  text-align: center; /* Centrar el texto en las etiquetas horizontalmente */
+  margin-bottom: 10px; /* Agregar espacio entre las etiquetas */
+}
+
+/* Estilo para los campos de entrada del formulario */
+input[type="text"],
+input[type="password"] {
+  width: 100%; /* Ajustar el ancho de los campos de entrada al 100% del formulario */
+  padding: 10px; /* Agregar relleno a los campos de entrada */
+  margin-bottom: 10px; /* Agregar espacio entre los campos de entrada */
+  border: 1px solid #ccc; /* Agregar un borde a los campos de entrada */
+  border-radius: 3px; /* Añadir bordes redondeados a los campos de entrada */
+}
+
+/* Estilo para los botones del formulario */
+button {
+  width: 100%; /* Ajustar el ancho de los botones al 100% del formulario */
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+/* Estilo para los contenedores de campos de entrada */
+.inputContainer {
+  display: flex; /* Utilizar flexbox para centrar elementos */
+  flex-direction: column; /* Colocar los elementos en una columna */
+  align-items: center; /* Centrar elementos horizontalmente */
+  margin-bottom: 20px; /* Agregar espacio entre los contenedores de campos de entrada */
+}
