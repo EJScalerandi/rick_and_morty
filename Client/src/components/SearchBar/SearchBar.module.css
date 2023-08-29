@@ -1,0 +1,31 @@
+.div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centra verticalmente los elementos */
+    align-items: center; /* Centra horizontalmente los elementos */
+    height: 15vh; /* Ajusta la altura según tus necesidades */
+}
+
+.input{
+    width: 30%;
+    height: 30%;
+    border-radius: 0.3rem;
+    border: black solid 1px;
+    padding: 0 0 0 1rem;
+}
+
+.btn {
+    width: 25%; /* El botón ocupa el 25% del ancho del contenedor */
+    height: 5vh;
+    border-radius: 0.3rem;
+    background-color: rgb(140, 140, 137);
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.btn:hover {
+    width: 25%; /* Mantiene el 25% del ancho del contenedor al pasar el mouse */
+    height: 5vh;
+    transition: 0.4s;
+}

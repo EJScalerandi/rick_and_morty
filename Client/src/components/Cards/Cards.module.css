@@ -1,0 +1,7 @@
+.div{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* Espacio uniforme entre las tarjetas */
+    gap: 10px; /* Espaciado entre las tarjetas (puedes ajustar esto según tu preferencia) */
+    max-width: 100%; /* Asegura que las tarjetas no se desborden del contenedor */
+}
