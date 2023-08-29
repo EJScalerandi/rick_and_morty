@@ -13,7 +13,7 @@ http.createServer((req, res) => {
 
     if(character){
       res.writeHead (200, {'Content-Type': 'application/json'});
-      return res.end(JSON.stringify(character));
+      return res.end(flavioJSON.stringify(character));
     }
     else{
       res.writeHead(404, {'Content-Type': 'application/json'});

@@ -1,55 +1,64 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { connect } from "react-redux"; // Importa connect
+import { useDispatch, useSelector } from "react-redux";
 import { addFav, removeFav } from "../../Redux/actions";
 import styles from "./Card.module.css";
 
-let Card = ({ name, species, gender, image, onClose, id, origin, addFav, removeFav }) => {
-   const [isFav, setIsFav] = useState(false);
+let Card = ({name, species, gender, image, onClose, id, origin}) =>{
+   let dispatch = useDispatch();
+   let miFav = useSelector(state => state.myFavorite);
+   let [ isFav, setIsFav ] = useState(false);
 
-   const handleFavorite = () => {
+   useEffect(() => {
+      miFav.forEach((fav) => {
+         if (fav.id === id) {
+            setIsFav(true);
+         }
+      });
+   }, [miFav]);
+
+   const handleFavorite = ()=>{
       if (isFav) {
+         dispatch(removeFav(id));
          setIsFav(false);
-         removeFav(id);
-      } else {
+      }else{
+         let myNewChar = {
+            id,
+            name,
+            species,
+            gender,
+            image
+         }
+         dispatch(addFav(myNewChar));
          setIsFav(true);
-         addFav({ id, name, species, gender, image, origin });
       }
    }
 
-   return (
-      <div className={styles.div}>
-         {isFav ? (
-            <button onClick={handleFavorite}>❤️</button>
-         ) : (
-            <button onClick={handleFavorite}>🤍</button>
-         )}
+
+   return(
+      <div>
          {
-            onClose ? <button onClick={() => onClose(id)}>X</button> : null
+            isFav ? ( <button onClick={handleFavorite}>❤️</button>) 
+            : ( <button onClick={handleFavorite}>🤍</button>)
          }
-
-         <Link to={`/detail/${id}`}>
-            <h2>{name}</h2>
+         {
+            onClose ? <button onClick={()=>onClose(id)}>X</button> : null
+         }
+         
+         <Link to={`/detail/${id}`} >
+            <h2>{name}</h2> <p>{id}</p>
          </Link>
-
+         
          <h2>{species}</h2>
          <h2>{gender}</h2>
          {
             origin ? <h2>{origin.name}</h2> : null
          }
-
-         <img src={image} alt="" />
+         
+         <img  src={image} alt="" />
       </div>
    );
 }
 
-const mapDispatchToProps = (dispatch) => {
-   return {
-      addFav: (pj) => dispatch(addFav(pj)),
-      removeFav: (id) => dispatch(removeFav(id)),
-   };
-};
-
-export default connect(null, mapDispatchToProps)(Card);
-
+export default Card;
 
