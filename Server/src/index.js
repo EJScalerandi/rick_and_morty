@@ -1,29 +1,28 @@
 const http = require('http');
-const characters = require('./utils/data.js'); 
 const PORT = 3001;
+const { getCharById } = require('./controllers/getCharById'); // Asegúrate de que la importación sea correcta
 
-http.createServer((req, res) => {
+http.createServer(async (req, res) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
-  const {url} = req;
+  const { url, method } = req;
 
-  if(url.includes("/rickandmorty/character")){
+  if (url.startsWith("/rickandmorty/character/")) {
+    // Dividir la URL en partes utilizando una barra como separador
     const parts = url.split("/");
+    // Obtener el ID del personaje
     const id = parts[parts.length - 1];
-    const character = characters.find((ch) => ch.id === parseInt(id));
 
-    if(character){
-      res.writeHead (200, {'Content-Type': 'application/json'});
-      return res.end(flavioJSON.stringify(character));
+    try {
+      // Llama a la función getCharById y pasa el ID como parámetro
+      await getCharById(req, res, id);
+    } catch (error) {
+      res.writeHead(500, { 'Content-Type': 'text/plain' });
+      res.end(error.message);
     }
-    else{
-      res.writeHead(404, {'Content-Type': 'application/json'});
-      return res.end(JSON.stringify({error: "Character not found"}));
-    }
+  } else {
+    res.writeHead(404, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({ error: "Route not found" }));
   }
-  
-
-  }).listen(PORT, () => {
+}).listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
-
-
